@@ -1,0 +1,176 @@
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #60a5fa;
+  --danger: #ef4444;
+  --success: #22c55e;
+
+  --diff-added-bg: rgba(34, 197, 94, 0.2);
+  --diff-added-text: #86efac;
+  --diff-removed-bg: rgba(239, 68, 68, 0.2);
+  --diff-removed-text: #fca5a5;
+
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--accent-secondary);
+}
+
+textarea {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  font-family: monospace;
+  width: 100%;
+  resize: vertical;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+textarea:focus {
+  outline: 2px solid var(--accent-primary);
+  border-color: transparent;
+}
+
+/* Wrapper for textarea with line numbers */
+.input-wrapper {
+  display: flex;
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: monospace;
+}
+
+.input-wrapper:focus-within {
+  outline: 2px solid var(--accent-primary);
+  border-color: transparent;
+}
+
+.line-numbers {
+  padding: 0.75rem 0.5rem;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border-right: 1px solid var(--bg-tertiary);
+  text-align: right;
+  min-width: 3.5rem;
+  user-select: none;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Reset default textarea styles when inside wrapper */
+.input-wrapper textarea {
+  border: none;
+  border-radius: 0;
+  outline: none;
+  margin: 0;
+  background: transparent;
+  flex: 1;
+  /* Ensure alignment matches line numbers exactly */
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 0.75rem;
+  resize: none;
+}
+
+
+/* Diff Styles */
+.diff-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.diff-content {
+  font-family: 'Fira Code', monospace;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.diff-chunk {
+  display: inline;
+}
+
+.diff-added {
+  background-color: var(--diff-added-bg);
+  color: var(--diff-added-text);
+  text-decoration: none;
+}
+
+.diff-removed {
+  background-color: var(--diff-removed-bg);
+  color: var(--diff-removed-text);
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.split-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  height: 100%;
+}
+
+.split-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pane-header {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
