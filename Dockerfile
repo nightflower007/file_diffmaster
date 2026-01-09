@@ -19,7 +19,9 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy the built artifacts from the build stage
-COPY --from=build /app/dist /usr/share/nginx/html
+# We copy to a 'file' subdirectory so that Nginx serves them at localhost/file/...
+# efficiently matching the Vite base path.
+COPY --from=build /app/dist /usr/share/nginx/html/file
 
 # Copy custom Nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
